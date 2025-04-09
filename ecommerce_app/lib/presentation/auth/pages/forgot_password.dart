@@ -2,17 +2,15 @@ import 'package:ecommerce_app/common/helper/navigator/app_navigator.dart';
 import 'package:ecommerce_app/common/widgets/appbar/app_bar.dart';
 import 'package:ecommerce_app/common/widgets/button/basic_app_button.dart';
 import 'package:ecommerce_app/presentation/auth/pages/enter_password.dart';
-import 'package:ecommerce_app/presentation/auth/pages/signup.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-class SigninPage extends StatelessWidget {
-  const SigninPage({super.key});
+class ForgotPasswordPage extends StatelessWidget {
+  const ForgotPasswordPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(hideBack: true,),
+      appBar: BasicAppbar(),
       body: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 16,
@@ -21,22 +19,20 @@ class SigninPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _signinText(context),
+            _resetPassword(context),
             const SizedBox(height: 20,),
-            _emailFiled(context),
+            _resetPasswordFiled(context),
             const SizedBox(height: 20,),
             _continueButton(context),
-            const SizedBox(height: 20,),
-            _createAccount(context),
           ],
         ),
       )
 
     );
   }
-  Widget _signinText(BuildContext context) {
+  Widget _resetPassword(BuildContext context) {
     return const Text(
-      'Iniciar Sesión',
+      'Restablecer contraseña',
       style: TextStyle(
         fontSize: 32,
         fontWeight: FontWeight.bold
@@ -44,10 +40,10 @@ class SigninPage extends StatelessWidget {
     );
   }
 
-  Widget _emailFiled(BuildContext context) {
+  Widget _resetPasswordFiled(BuildContext context) {
     return TextField(
       decoration: InputDecoration(
-        hintText: 'Escribe el E-mail'
+        hintText: 'Escribe una nueva contraseña'
       ),
     );
   }
@@ -55,29 +51,10 @@ class SigninPage extends StatelessWidget {
   Widget _continueButton(BuildContext context) {
     return BasicAppButton(
       onPressed: () {
-        AppNavigator.push(context, const EnterPasswordPage());
+        
       },
       title: 'Continuar',
       );
   }
 
-  Widget _createAccount(BuildContext context) {
-    return RichText(
-      text: TextSpan(
-        children: [
-          TextSpan(
-            text: '¿No tienes cuenta? '
-          ),
-          TextSpan(
-            text: 'Create una',
-            recognizer: TapGestureRecognizer()..onTap = () {
-              AppNavigator.push(context, const SignupPage());
-            },
-            style: TextStyle(
-              fontWeight: FontWeight.bold
-            )
-          )
-        ]
-      ));
-  }
 }

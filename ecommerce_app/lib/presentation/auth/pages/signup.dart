@@ -2,17 +2,18 @@ import 'package:ecommerce_app/common/helper/navigator/app_navigator.dart';
 import 'package:ecommerce_app/common/widgets/appbar/app_bar.dart';
 import 'package:ecommerce_app/common/widgets/button/basic_app_button.dart';
 import 'package:ecommerce_app/presentation/auth/pages/enter_password.dart';
-import 'package:ecommerce_app/presentation/auth/pages/signup.dart';
+import 'package:ecommerce_app/presentation/auth/pages/forgot_password.dart';
+import 'package:ecommerce_app/presentation/auth/pages/signin.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-class SigninPage extends StatelessWidget {
-  const SigninPage({super.key});
+class SignupPage extends StatelessWidget {
+  const SignupPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(hideBack: true,),
+      appBar: BasicAppbar(),
       body: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 16,
@@ -21,26 +22,47 @@ class SigninPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _signinText(context),
+            _signupText(context),
+            const SizedBox(height: 20,),
+            _fisrtnameFiled(context),
+            const SizedBox(height: 20,),
+            _lastnameFiled(context),
             const SizedBox(height: 20,),
             _emailFiled(context),
             const SizedBox(height: 20,),
+             _passwordFiled(context),
+            const SizedBox(height: 20,),
             _continueButton(context),
             const SizedBox(height: 20,),
-            _createAccount(context),
+            _forgotPassword(context),
           ],
         ),
       )
 
     );
   }
-  Widget _signinText(BuildContext context) {
+  Widget _signupText(BuildContext context) {
     return const Text(
-      'Iniciar Sesión',
+      'Crear Cuenta',
       style: TextStyle(
         fontSize: 32,
         fontWeight: FontWeight.bold
       )
+    );
+  }
+  Widget _fisrtnameFiled(BuildContext context) {
+    return TextField(
+      decoration: InputDecoration(
+        hintText: 'Nombres'
+      ),
+    );
+  }
+
+  Widget _lastnameFiled(BuildContext context) {
+    return TextField(
+      decoration: InputDecoration(
+        hintText: 'Apellidos'
+      ),
     );
   }
 
@@ -52,26 +74,34 @@ class SigninPage extends StatelessWidget {
     );
   }
 
+   Widget _passwordFiled(BuildContext context) {
+    return TextField(
+      decoration: InputDecoration(
+        hintText: 'Escribe la contraseña'
+      ),
+    );
+  }
+
   Widget _continueButton(BuildContext context) {
     return BasicAppButton(
       onPressed: () {
-        AppNavigator.push(context, const EnterPasswordPage());
+
       },
       title: 'Continuar',
       );
   }
 
-  Widget _createAccount(BuildContext context) {
+ Widget _forgotPassword(BuildContext context) {
     return RichText(
       text: TextSpan(
         children: [
           TextSpan(
-            text: '¿No tienes cuenta? '
+            text: '¿Tienes una cuenta? '
           ),
           TextSpan(
-            text: 'Create una',
+            text: 'Inicia sesión',
             recognizer: TapGestureRecognizer()..onTap = () {
-              AppNavigator.push(context, const SignupPage());
+              AppNavigator.push(context, const SigninPage());
             },
             style: TextStyle(
               fontWeight: FontWeight.bold
