@@ -1,112 +1,136 @@
+
 import 'package:ecommerce_app/common/helper/navigator/app_navigator.dart';
 import 'package:ecommerce_app/common/widgets/appbar/app_bar.dart';
 import 'package:ecommerce_app/common/widgets/button/basic_app_button.dart';
+import 'package:ecommerce_app/data/auth/models/user_creation_req.dart';
 import 'package:ecommerce_app/presentation/auth/pages/gender_and_selection.dart';
 import 'package:ecommerce_app/presentation/auth/pages/signin.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class SignupPage extends StatelessWidget {
-  const SignupPage({super.key});
+  SignupPage({super.key});
+
+  final TextEditingController _firstNameCon = TextEditingController();
+  final TextEditingController _lastNameCon = TextEditingController();
+  final TextEditingController _emailCon = TextEditingController();
+  final TextEditingController _passwordCon = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(),
-      body: Padding(
+      appBar: const BasicAppbar(),
+      body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(
-          horizontal: 16,
-          vertical: 10
-        ),
+        horizontal: 16,
+        vertical: 40
+      ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _signupText(context),
+            _siginText(),
             const SizedBox(height: 20,),
-            _fisrtnameFiled(context),
+            _firstNameField(),
             const SizedBox(height: 20,),
-            _lastnameFiled(context),
+            _lastNameField(),
             const SizedBox(height: 20,),
-            _emailFiled(context),
+            _emailField(),
             const SizedBox(height: 20,),
-             _passwordFiled(context),
+            _passwordField(context),
             const SizedBox(height: 20,),
             _continueButton(context),
             const SizedBox(height: 20,),
-            _forgotPassword(context),
+            _createAccount(context)
           ],
         ),
-      )
-
+      ),
     );
   }
-  Widget _signupText(BuildContext context) {
+
+  Widget _siginText() {
     return const Text(
       'Crear Cuenta',
       style: TextStyle(
         fontSize: 32,
         fontWeight: FontWeight.bold
-      )
+      ),
     );
   }
-  Widget _fisrtnameFiled(BuildContext context) {
+
+  Widget _firstNameField() {
     return TextField(
-      decoration: InputDecoration(
+      controller: _firstNameCon,
+      decoration: const InputDecoration(
         hintText: 'Nombres'
       ),
     );
   }
 
-  Widget _lastnameFiled(BuildContext context) {
+  Widget _lastNameField() {
     return TextField(
-      decoration: InputDecoration(
+      controller: _lastNameCon,
+      decoration: const InputDecoration(
         hintText: 'Apellidos'
       ),
     );
   }
 
-  Widget _emailFiled(BuildContext context) {
+  Widget _emailField() {
     return TextField(
-      decoration: InputDecoration(
-        hintText: 'Escribe el E-mail'
+      controller: _emailCon,
+      decoration: const InputDecoration(
+        hintText: 'E-mail'
       ),
     );
   }
 
-   Widget _passwordFiled(BuildContext context) {
+  Widget _passwordField(BuildContext context) {
     return TextField(
-      decoration: InputDecoration(
-        hintText: 'Escribe la contraseña'
+      controller: _passwordCon,
+      decoration: const InputDecoration(
+        hintText: 'Contraseña'
       ),
     );
   }
 
   Widget _continueButton(BuildContext context) {
     return BasicAppButton(
-      onPressed: () {
-          AppNavigator.push(context, GenderAndAgeSelectionPage());
+      onPressed: (){
+        AppNavigator.push(
+          context,
+          GenderAndAgeSelectionPage(
+            userCreationReq: UserCreationReq(
+              firstName: _firstNameCon.text,
+              email: _emailCon.text, 
+              lastName: _lastNameCon.text,
+              password: _passwordCon.text
+            ),
+          )
+        );
       },
-      title: 'Continuar',
-      );
+      title: 'Continuar'
+    );
   }
 
- Widget _forgotPassword(BuildContext context) {
+  Widget _createAccount(BuildContext context) {
     return RichText(
       text: TextSpan(
-        children: [
-          TextSpan(
-            text: '¿Tienes una cuenta? '
+        children:  [
+          const TextSpan(
+            text: "¿Tienes una cuenta? "
           ),
-          TextSpan(
-            text: 'Inicia sesión',
-            recognizer: TapGestureRecognizer()..onTap = () {
-              AppNavigator.push(context, const SigninPage());
-            },
-            style: TextStyle(
+           TextSpan(
+            text: 'Iniciar sesión',
+            recognizer:TapGestureRecognizer()..onTap = () {
+              AppNavigator.pushReplacement(context, SigninPage());
+            } ,
+            style: const TextStyle(
               fontWeight: FontWeight.bold
             )
           )
         ]
-      ));
+
+      ),
+    );
   }
 }

@@ -14,8 +14,8 @@ class Ages extends StatelessWidget {
 
     final sizeHeight = MediaQuery.of(context).size.height;
 
-    return Container(
-      height: sizeHeight / 2,
+    return SizedBox(
+      height: sizeHeight / 2.7,
       child: BlocBuilder<AgesDisplayCubit,AgesDisplayStates>(
         builder: (context, state) {
           if (state is AgesLoading) {
