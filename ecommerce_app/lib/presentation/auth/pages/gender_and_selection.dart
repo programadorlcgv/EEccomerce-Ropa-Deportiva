@@ -4,7 +4,7 @@ import 'package:ecommerce_app/common/helper/bottomsheet/app_bottomsheet.dart';
 import 'package:ecommerce_app/common/widgets/button/button_reactive_button.dart';
 import 'package:ecommerce_app/core/configs/theme/app_colors.dart';
 import 'package:ecommerce_app/data/auth/models/user_creation_req.dart';
-import 'package:ecommerce_app/domain/auth/repository/usecases/signup.dart';
+import 'package:ecommerce_app/domain/auth/usecases/signup.dart';
 import 'package:ecommerce_app/presentation/auth/bloc/age_selection_cubit.dart';
 import 'package:ecommerce_app/presentation/auth/bloc/ages_display_cubit.dart';
 import 'package:ecommerce_app/presentation/auth/bloc/gender_selection_cubit.dart';
