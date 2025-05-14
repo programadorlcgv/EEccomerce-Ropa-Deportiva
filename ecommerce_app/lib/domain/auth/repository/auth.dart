@@ -7,6 +7,8 @@ abstract class AuthRepository {
   Future<Either> signup(UserCreationReq user);
   Future<Either> signin(UserSigninReg user);
   Future<Either> getAges();
+  Future<Either> sendPasswordResetEmail(String email);
+
   
 
 }
