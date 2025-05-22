@@ -1,0 +1,20 @@
+{
+  "buildFiles": [
+    "C:\\flutter\\packages\\flutter_tools\\gradle\\src\\main\\groovy\\CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "C:\\Users\\Programacion\\AppData\\Local\\Android\\sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+      "-C",
+      "C:\\Users\\Programacion\\Desktop\\Proyecto Productivo Sena\\Ecommerce de Ropa deportiva\\ecommerce_app\\android\\app\\.cxx\\Debug\\4n3e2hp1\\arm64-v8a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "C:\\Users\\Programacion\\AppData\\Local\\Android\\sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+    "-C",
+    "C:\\Users\\Programacion\\Desktop\\Proyecto Productivo Sena\\Ecommerce de Ropa deportiva\\ecommerce_app\\android\\app\\.cxx\\Debug\\4n3e2hp1\\arm64-v8a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {}
+}
